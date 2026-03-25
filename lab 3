@@ -1,3 +1,4 @@
+#bài 1
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
@@ -30,4 +31,80 @@ plt.show()
 
 df_zscore.hist(figsize=(10,6))
 plt.suptitle("Z-Score Scaling")
+plt.show()
+#bài 2
+df = pd.read_csv("ITA105_Lab_3_Health.csv")
+
+
+df.hist(figsize=(10,8))
+plt.suptitle("Histogram - Health")
+plt.show()
+
+
+df.plot(kind='box', figsize=(8,5))
+plt.title("Boxplot - Health")
+plt.show()
+
+
+df_minmax = pd.DataFrame(minmax.fit_transform(df), columns=df.columns)
+df_zscore = pd.DataFrame(zscore.fit_transform(df), columns=df.columns)
+
+
+df_minmax.hist(figsize=(10,6))
+plt.suptitle("Min-Max - Health")
+plt.show()
+
+df_zscore.hist(figsize=(10,6))
+plt.suptitle("Z-Score - Health")
+plt.show()
+
+#bài 3 
+df = pd.read_csv("ITA105_Lab_3_Finance.csv")
+
+
+df.plot(kind='box')
+plt.title("Boxplot - Finance")
+plt.show()
+
+plt.scatter(df.iloc[:,0], df.iloc[:,1])
+plt.xlabel("Revenue")
+plt.ylabel("Profit")
+plt.title("Before Scaling")
+plt.show()
+
+
+df_minmax = pd.DataFrame(minmax.fit_transform(df), columns=df.columns)
+df_zscore = pd.DataFrame(zscore.fit_transform(df), columns=df.columns)
+
+plt.scatter(df_minmax.iloc[:,0], df_minmax.iloc[:,1])
+plt.title("Min-Max Scaling")
+plt.show()
+
+plt.scatter(df_zscore.iloc[:,0], df_zscore.iloc[:,1])
+plt.title("Z-Score Scaling")
+plt.show()
+#bài 4
+df = pd.read_csv("ITA105_Lab_3_Gaming.csv")
+
+
+df.hist(figsize=(10,8))
+plt.suptitle("Histogram - Gaming")
+plt.show()
+
+
+df.plot(kind='box')
+plt.title("Boxplot - Gaming")
+plt.show()
+
+
+df_minmax = pd.DataFrame(minmax.fit_transform(df), columns=df.columns)
+df_zscore = pd.DataFrame(zscore.fit_transform(df), columns=df.columns)
+
+
+df_minmax.hist(figsize=(10,6))
+plt.suptitle("Min-Max - Gaming")
+plt.show()
+
+df_zscore.hist(figsize=(10,6))
+plt.suptitle("Z-Score - Gaming")
 plt.show()
