@@ -1,0 +1,33 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+df = pd.read_csv("ITA105_Lab_3_Sports.csv")
+
+# Histogram
+df.hist(figsize=(10,8))
+plt.suptitle("Histogram - Sports")
+plt.show()
+
+df.plot(kind='box', subplots=True, layout=(2,3), figsize=(10,6))
+plt.suptitle("Boxplot - Sports")
+plt.show()
+
+
+minmax = MinMaxScaler()
+zscore = StandardScaler()
+
+df_minmax = pd.DataFrame(minmax.fit_transform(df), columns=df.columns)
+df_zscore = pd.DataFrame(zscore.fit_transform(df), columns=df.columns)
+
+df.hist(figsize=(10,6))
+plt.suptitle("Before Scaling")
+plt.show()
+
+df_minmax.hist(figsize=(10,6))
+plt.suptitle("Min-Max Scaling")
+plt.show()
+
+df_zscore.hist(figsize=(10,6))
+plt.suptitle("Z-Score Scaling")
+plt.show()
